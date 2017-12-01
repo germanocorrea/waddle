@@ -1,0 +1,49 @@
+body, html {
+    background-color: #B04632;
+    max-height: 100vh;
+    min-width: 100%;
+    max-width: 200vh;
+    overflow-x: auto;
+}
+
+.top-bar, .top-bar-left, .top-bar-left .menu {
+    background-color: #963C2B;
+}
+.card {
+    border-radius: 3px;
+    padding: 0.3em;
+    cursor: pointer;
+}
+
+.swal2-popup .swal2-content {
+    font-size: initial !important;
+    text-align: initial !important;
+}
+
+.board-column {
+    margin: 1em;
+    padding: 1em;
+    background: whitesmoke;
+    border-radius: 2px;
+    float: left;
+    width: 300px;
+    height: 80vh;
+}
+
+.board-column ul {
+    max-width: 100%;
+    overflow-y: scroll;
+    position: relative;
+    height: 80%;
+    overflow: auto;
+    box-sizing: border-box;
+}
+
+.draghere {
+    background-color: #e0e0e0;
+    padding: 2em;
+    border: 0px;
+    border-radius: 3px;
+    display: none;
+    color: #9b9494;
+}
