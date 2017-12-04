@@ -33,3 +33,7 @@ Or point the server's root to the `public/` directory.
 ## Contributing
 
 I'm opened to contributions, feel free to suggest something. Check the current opened project at [Waddle's Board](https://github.com/germanocorrea/waddle/projects/1). Discussions about anything described in the board should lead to (new or not new) issues created from the respective card. For server-side debugging, you can use the `debug()` function or `$this->logger->info()`, which is Slim's defaut method to log stuff in the `logs/app.log` file.
+
+## Acknowledgment
+
+- My classmate Laura, which originally created the app with me
