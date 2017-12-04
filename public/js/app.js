@@ -8,19 +8,15 @@ var app = new Vue({
         openMail: function(event) {
             var target = (event.target.id == "" ? event.target.parentElement : event.target)
             $.get('/mail/' + target.id).then(function(result) {
-                console.log(result);
-                swal({
-                    title: result.mail.subject,
-                    html: result.mail.html,
-                    width: 700,
-                    showCloseButton: true,
-                    showConfirmButton: false
-                })
+                html = '<h3>' + result.mail.subject + '</h3>'
+                html += '<small>' + result.mail.from + '</small>'
+                html += '<hr>'
+                html += result.mail.html
+                $('#mailmodal').html(html).foundation('open')
             })
         },
         dragStart: function(event) {
             window.board.currentParent = $(event.target).parent().parent().attr('id')
-            console.log("Movendo: " + event.target.id);
             event.dataTransfer.setData("text/plain", event.target.id)
             $('.dropzone').toggleClass('todrop')
             $('.draghere').show()
@@ -28,6 +24,7 @@ var app = new Vue({
 
         dragEnd: function(event) {
             $('.dropzone').toggleClass('todrop')
+            $('.draghere').hide()
         },
 
         dragOver: function(event) {
@@ -48,7 +45,6 @@ var app = new Vue({
             event.preventDefault()
             changeCardColumn(event)
             updateBoard()
-            $('.draghere').hide()
         },
     }
 })
@@ -84,8 +80,10 @@ function sendBoardToServer() {
         url: "/savedata",
         dataType: 'json',
         data: window.board.data
-    }).done(function(data) {
-        return true
+    }).then(function(data) {
+        console.log(data)
+    }, function(data) {
+        console.log(data)
     })
 }
 
