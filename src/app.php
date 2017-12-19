@@ -3,23 +3,11 @@
 use Slim\Http\Request;
 use Slim\Http\Response;
 
-function setInboxIfEmptyBoard($columns, $mailsDecoded) {
-    $empty = true;
-    foreach ($columns as $key => $mailIds) {
-        if (count($mailIds) > 0 ) $empty = false;
-    }
-    if ($empty) foreach ($mailsDecoded as $key => $value) {
-        $columns->inbox[] = $key;
-    }
-    return $columns;
-}
-
 require __DIR__ . '/utilities/utils.inc.php';
 $mongo = (new MongoDB\Client)->waddle;
 
 $app->get('/', function (Request $request, Response $response, array $args) {
-    $template = 'board';
-    // $template = firstRun();
+    $template = firstRun();
     return $this->renderer->render($response, $template . '.phtml', $args);
 });
 
@@ -27,6 +15,17 @@ $app->get('/mail/{id}', function(Request $request, Response $response, array $ar
     $mailId = $request->getAttribute('id');
     $args['mail'] = getMailsFromJson()->$mailId;
     return $this->renderer->render($response->withJson($args), 'empty');
+});
+
+$app->post('/newuser', function(Request $request, Response $response, array $args) {
+    global $mongo;
+    $data = $request->getParsedBody();
+    $mongo->user->insertOne([
+        '_id' => 0,
+        'email' => $data['email'],
+        'password' => $data['password']
+    ]);
+    return $response->withRedirect('/');
 });
 
 $app->get('/syncmails', function(Request $request, Response $response, array $args) {

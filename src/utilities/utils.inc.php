@@ -11,3 +11,42 @@ function debugEcho($value) {
     echo '</pre>';
     die;
 }
+
+function setInboxIfEmptyBoard($columns, $mailsDecoded) {
+    $empty = true;
+    foreach ($columns as $key => $mailIds) {
+        if (count($mailIds) > 0 ) $empty = false;
+    }
+    if ($empty) foreach ($mailsDecoded as $key => $value) {
+        $columns->inbox[] = $key;
+    }
+    return $columns;
+}
+
+function firstRun() {
+    global $mongo;
+    if (empty($mongo->user->find()->toArray())) {
+        $mongo->columns->insertMany([
+            [
+                'name' => 'inbox',
+                'mails' => []
+            ],
+            [
+                'name' => 'todo',
+                'mails' => []
+            ],
+            [
+                'name' => 'doing',
+                'mails' => []
+            ],
+            [
+                'name' => 'done',
+                'mails' => []
+            ],
+        ]);
+
+        return 'config';
+    } else {
+        return 'board';
+    }
+}
