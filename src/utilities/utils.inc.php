@@ -24,9 +24,9 @@ function setInboxIfEmptyBoard($columns, $mailsDecoded) {
 }
 
 function firstRun() {
-    global $mongo;
-    if (empty($mongo->user->find()->toArray())) {
-        $mongo->columns->insertMany([
+    global $database;
+    if (empty($database->user->find()->toArray())) {
+        $database->columns->insertMany([
             [
                 'name' => 'inbox',
                 'mails' => []

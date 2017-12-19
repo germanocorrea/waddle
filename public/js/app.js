@@ -11,11 +11,16 @@ var app = new Vue({
         openMail: function(event) {
             var target = (event.target.id == '' ? event.target.parentElement : event.target)
             $.get('/mail/' + target.id).then(function(result) {
-                html = '<h3>' + result.mail.subject + '</h3>'
-                html += '<small>' + result.mail.from + '</small>'
-                html += '<hr>'
-                html += result.mail.html
-                $mailView.html(html).foundation('open')
+                if (!result.mail) {
+                    $alert.html('<p>An error ocurred while getting your email! :c</p>').foundation('open')
+                    console.log(result)
+                } else {
+                    html = '<h3>' + result.mail.subject + '</h3>'
+                    html += '<small>' + result.mail.from + '</small>'
+                    html += '<hr>'
+                    html += result.mail.html
+                    $mailView.html(html).foundation('open')
+                }
             })
         },
         dragStart: function(event) {
