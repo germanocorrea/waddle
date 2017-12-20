@@ -1,0 +1,61 @@
+.alert-callout-subtle {
+    width: 100%;
+    background: #e6e6e6;
+    color: #8a8a8a;
+    border: 0;
+    border-left: 0.3125rem solid #8a8a8a;
+    box-shadow: 0 5px 8px -6px rgba(0, 0, 0, 0.2);
+}
+
+.alert-callout-subtle.success {
+    background: #e6e6e6;
+    color: #8a8a8a;
+    border-left: 0.3125rem solid #3adb76;
+}
+
+.alert-callout-subtle.alert {
+    background: #e6e6e6;
+    color: #8a8a8a;
+    border-left: 0.3125rem solid #cc4b37;
+}
+
+.alert-callout-subtle.warning {
+    background: #e6e6e6;
+    color: #8a8a8a;
+    border-left: 0.3125rem solid #ffae00;
+}
+
+.alert-callout-subtle.primary {
+    background: #e6e6e6;
+    color: #8a8a8a;
+    border-left: 0.3125rem solid #1779ba;
+}
+
+.alert-callout-subtle.small {
+    font-size: 80%;
+}
+
+.alert-callout-subtle.small .close-button {
+    font-size: 1.5rem;
+}
+
+.alert-callout-subtle.large {
+    font-size: 150%;
+}
+
+.alert-callout-subtle.large .close-button {
+    font-size: 3rem;
+}
+
+.alert-callout-subtle .close-button {
+    font-size: 2rem;
+    position: absolute;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+
+.alert-callout-subtle.radius {
+    border-radius: 0.6rem;
+}

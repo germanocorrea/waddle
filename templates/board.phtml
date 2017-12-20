@@ -1,4 +1,17 @@
 <?php require __DIR__ . '/header.phtml' ?>
+<?php require __DIR__ . '/alert.phtml' ?>
+        <div class="small reveal card" id="syncmodal" data-reveal>
+            <div class="card-divider">
+                Sync mails from provider
+            </div>
+            <div class="card-section">
+                <p>This can take a while :c</p>
+                <div class="button-group">
+                    <button name="sync" class="button btn-sync" data-syncFromServer><span>Sync</span></button>
+                    <button name="cancel" onclick="$('#syncmodal').foundation('close')" class="button secondary">Cancel</button>
+                </div>
+            </div>
+        </div>
         <div class="small reveal" id="mailmodal" data-reveal></div>
         <div class="small reveal" id="alertModal" data-reveal></div>
         <div id="maindrag" class="board-conta container">

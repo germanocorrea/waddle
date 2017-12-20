@@ -15,11 +15,6 @@ body, html {
     cursor: pointer;
 }
 
-.swal2-popup .swal2-content {
-    font-size: initial !important;
-    text-align: initial !important;
-}
-
 .board-column {
     margin: 1em;
     padding: 1em;

@@ -1,6 +1,48 @@
 var Board = {}
-var $alert = $('#alertModal') // TODO: fazer este
+var $alert = $('#mainalert')
 var $mailView = $('#mailmodal')
+
+function startBoard() {
+    $.get('/getmails').done(function(data) {
+        Board.data = data
+        updateBoard()
+    })
+}
+
+function alert(text, type) {
+    $('#alert-info').html('').html(text)
+    $alert.addClass(type).show();
+    setTimeout(function() {
+        $alert.removeClass(type).hide();
+    }, 3000)
+}
+
+function updateBoard() {
+    app.columns = [];
+    $(Board.data.columns).each(function() {
+        app.columns.push(this)
+    })
+    sendBoardToServer()
+}
+
+function changeCardColumn(event) {
+    app.columns[Board.newParent].cards[event.dataTransfer.getData('text/plain')] = app.$set(app.columns[Board.newParent], event.dataTransfer.getData('text/plain'), Board.data.columns[Board.currentParent].cards[event.dataTransfer.getData('text/plain')])
+    delete app.columns[Board.currentParent].cards[event.dataTransfer.getData('text/plain')]
+
+}
+
+function sendBoardToServer() {
+    $.ajax({
+        method: 'GET',
+        url: '/savedata',
+        dataType: 'json',
+        data: Board.data
+    }).then(function(data) {
+        console.log(data)
+    }, function(data) {
+        console.log(data)
+    })
+}
 
 var app = new Vue({
     el: '#maindrag',
@@ -59,55 +101,18 @@ var app = new Vue({
 
 $(function() {
     $(document).foundation()
-    $.get('/getmails').done(function(data) {
-        Board.data = data
-        updateBoard()
-    })
+    startBoard()
 })
 
-function updateBoard() {
-    app.columns = [];
-    $(Board.data.columns).each(function() {
-        app.columns.push(this)
+$('[data-syncFromServer]').click(function() {
+    $(this).addClass('is-adding')
+    $.get('/syncmails').then(function() {
+        $('#syncmodal').foundation('close')
+        $('[data-syncFromServer]').removeClass('is-adding')
+        startBoard()
+        alert('Mails synced!', 'success')
+    }, function() {
+        $('#syncmodal').foundation('close')
+        alert('Something went very wrong!', 'alert')
     })
-    sendBoardToServer()
-}
-
-function changeCardColumn(event) {
-    app.columns[Board.newParent].cards[event.dataTransfer.getData('text/plain')] = app.$set(app.columns[Board.newParent], event.dataTransfer.getData('text/plain'), Board.data.columns[Board.currentParent].cards[event.dataTransfer.getData('text/plain')])
-    delete app.columns[Board.currentParent].cards[event.dataTransfer.getData('text/plain')]
-
-}
-
-function sendBoardToServer() {
-    $.ajax({
-        method: 'GET',
-        url: '/savedata',
-        dataType: 'json',
-        data: Board.data
-    }).then(function(data) {
-        console.log(data)
-    }, function(data) {
-        console.log(data)
-    })
-}
-
-function syncFromServer(event) {
-    swal({
-        title: 'Sincronizar Emails do Provedor',
-        text: 'Isso pode demorar um pouco :/',
-        showCancelButton: true,
-        confirmButtonText: 'Faça!',
-        showLoaderOnConfirm: true,
-        preConfirm: function(email) {
-            return new Promise(function(resolve) {
-                return $.get('/syncmails').then(function() {
-                    $mailView.html('<h1>Email sincronizados!</h1>').foundation('open')
-                }, function() {
-                    $mailView.html('<h1>Alguma coisa deu muito errado!</h1>').foundation('open')
-                })
-            })
-        },
-        allowOutsideClick: false
-    })
-}
+})
