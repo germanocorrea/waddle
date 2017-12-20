@@ -42,3 +42,8 @@ body, html {
     display: none;
     color: #9b9494;
 }
+
+.grid-frame {
+    width: calc;
+    overflow-x: scroll;
+}
