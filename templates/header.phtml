@@ -1,23 +1,30 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Waddle</title>
-        <link rel="stylesheet" href="css/foundation.min.css">
-        <link rel="stylesheet" href="fonts/foundation-icons.css">
-        <link rel="stylesheet" href="css/btn-ajax-loader.css">
-        <link rel="stylesheet" href="css/alert.css">
-        <link rel="stylesheet" href="css/app.css">
-        <script src="js/vue.js" charset="utf-8"></script>
-    </head>
-    <body>
-        <header class="top-bar">
-            <div class="top-bar-left">
-                <ul class="menu">
-                    <li class="menu-text">Waddle</li>
-                    <li><a href="#" name="button" onclick="$('#syncmodal').foundation('open')">Sincronizar Emails</a></li>
-                </ul>
-            </div>
-            <div class="top-bar-right"></div>
-        </header>
+<header class="top-bar">
+    <div class="top-bar-left">
+        <ul class="menu">
+            <li class="menu-text">Waddle</li>
+            <li><a data-openSyncModal tabindex="0" class="has-tip" data-tooltip aria-haspopup="true" title="Sync mails"><i class="fi-refresh"></i></a></li>
+            <li><a data-addColumnModal tabindex="0" class="has-tip" data-tooltip aria-haspopup="true" title="Add column"><i class="fi-plus"></i></a></li>
+        </ul>
+    </div>
+    <div class="top-bar-right"></div>
+</header>
+<div class="small reveal card" id="syncmodal" data-animation-in="slide-in-down" data-animation-out="slide-out-up" data-reveal>
+    <div class="card-divider">
+        Sync mails from provider
+    </div>
+    <div class="card-section">
+        <p>This can take a while :c</p>
+        <button name="sync" class="button btn-sync" data-syncFromServer><span>Sync</span></button>
+    </div>
+</div>
+<div class="small reveal" id="addcolumn" data-animation-in="slide-in-down" data-animation-out="slide-out-up" data-reveal>
+    <div class="card-divider">
+        Add new column
+    </div>
+    <div class="card-section">
+        <input type="text" id="newcolname" placeholder="Your super column's name!">
+        <button name="sync" class="button btn-sync" data-addColumn><span>Add</span></button>
+    </div>
+</div>
+<div class="small reveal" data-animation-in="slide-in-down" data-animation-out="slide-out-up" id="mailmodal" data-reveal></div>
+<div class="small reveal" data-animation-in="slide-in-down" data-animation-out="slide-out-up" id="alertModal" data-reveal></div>

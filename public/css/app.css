@@ -1,13 +1,10 @@
 body, html {
-    background-color: #B04632;
-    max-height: 100vh;
-    min-width: 100%;
-    max-width: 200vh;
-    overflow-x: auto;
+    background-color: #c8c8c8;
+    overflow-x: hidden;
 }
 
 .top-bar, .top-bar-left, .top-bar-left .menu {
-    background-color: #963C2B;
+    /* background-color: #963C2B; */
 }
 .card {
     border-radius: 3px;
@@ -46,4 +43,18 @@ body, html {
 .grid-frame {
     width: calc;
     overflow-x: scroll;
+}
+
+.has-tip {
+    cursor: pointer !important;
+    border: 0;
+}
+
+#mainalert {
+    display: none;
+    position: absolute;
+    z-index: 100;
+    width: 30vw;
+    margin-top: 15px;
+    margin-left: 15px;
 }

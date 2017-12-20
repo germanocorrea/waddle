@@ -104,6 +104,36 @@ $(function() {
     startBoard()
 })
 
+$('[data-openSyncModal]').click(function() {
+    $('#syncmodal').foundation('open')
+})
+
+$('[data-addColumnModal]').click(function() {
+    $('#addcolumn').foundation('open')
+})
+
+$('[data-clickColumnTitle]').click(function() {
+    var colTitle = $(this).html()
+})
+
+$('[data-addColumn]').click(function() {
+    $.ajax({
+        method: 'POST',
+        url: '/newcol',
+        dataType: 'json',
+        data: {
+            colname: $('#newcolname').val()
+        }
+    }).then(function() {
+        alert('Column created with success!', 'success')
+        $('#addcolumn').foundation('close')
+        startBoard()
+    }, function() {
+        alert('Something went wrong!', 'alert')
+        $('#addcolumn').foundation('close')
+    })
+})
+
 $('[data-syncFromServer]').click(function() {
     $(this).addClass('is-adding')
     $.get('/syncmails').then(function() {

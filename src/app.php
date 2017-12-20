@@ -81,3 +81,13 @@ $app->get('/savedata', function(Request $request, Response $response, array $arg
     $args['debug'] = json_decode($request->getQueryParams());
     return $this->renderer->render($response->withJson($args), 'empty');
 });
+
+$app->post('/newcol', function(Request $request, Response $response, array $args){
+    global $database;
+    $data = $request->getParsedBody();
+    $database->columns->insertOne([
+        'name' => $data['colname'],
+        'mails' => []
+    ]);
+    return $this->renderer->render($response->withJson($args), 'empty');
+});

@@ -1,19 +1,6 @@
+<?php require __DIR__ . '/doc-header.phtml' ?>
 <?php require __DIR__ . '/header.phtml' ?>
 <?php require __DIR__ . '/alert.phtml' ?>
-        <div class="small reveal card" id="syncmodal" data-reveal>
-            <div class="card-divider">
-                Sync mails from provider
-            </div>
-            <div class="card-section">
-                <p>This can take a while :c</p>
-                <div class="button-group">
-                    <button name="sync" class="button btn-sync" data-syncFromServer><span>Sync</span></button>
-                    <button name="cancel" onclick="$('#syncmodal').foundation('close')" class="button secondary">Cancel</button>
-                </div>
-            </div>
-        </div>
-        <div class="small reveal" id="mailmodal" data-reveal></div>
-        <div class="small reveal" id="alertModal" data-reveal></div>
         <div id="maindrag" class="board-conta container grid-frame grid-x">
                 <div
                 class="board-column dropzone cell"
@@ -23,10 +10,10 @@
                 v-on:drop="dropElement"
                 v-for="(column, index) in columns"
                 v-bind:id="index">
-                    <h3>{{ column.title }}</h3>
+                    <h3 data-clickColumnTitle>{{ column.title }}</h3>
                     <ul v-bind:id="index">
                         <li class="draghere card" v-bind:id="index">
-                            Aqui!
+                            Drop Here!
                         </li>
                         <li
                         class="card draggable"
