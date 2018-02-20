@@ -1,27 +1,30 @@
-.btn-sync {
-    position: relative;
+.underLoad {
+    opacity: 0.1;
+}
+
+#ajax-loader {
     overflow: hidden;
 }
 
-.btn-sync.is-adding {
+#ajax-loader.is-loading {
     border-radius: 25px;
     max-width: 50px;
     max-height: 50px;
     cursor: default;
 }
 
-.btn-sync.is-adding::after {
+#ajax-loader.is-loading::after {
     -webkit-animation: fadeIn 0.3s ease-in, spin 1.3s infinite ease-in-out;
     animation: fadeIn 0.3s ease-in, spin 1.3s infinite ease-in-out;
     -webkit-animation-fill-mode: forwards;
     animation-fill-mode: forwards;
 }
 
-.btn-sync.is-adding span {
+#ajax-loader.is-loading span {
     opacity: 0;
 }
 
-.btn-sync::after {
+#ajax-loader::after {
     content: " ";
     border-top: solid 4px #17cae6;
     border-right: solid 4px #17cae6;

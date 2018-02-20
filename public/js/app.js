@@ -2,6 +2,11 @@ var Board = {}
 var $alert = $('#mainalert')
 var $mailView = $('#mailmodal')
 
+function toggleWait() {
+    $('#ajax-loader').toggleClass('is-loading')
+    $('#universe').toggleClass('underLoad')
+}
+
 function startBoard() {
     $.get('/getmails').done(function(data) {
         Board.data = data
@@ -28,7 +33,6 @@ function updateBoard() {
 function changeCardColumn(event) {
     app.columns[Board.newParent].cards[event.dataTransfer.getData('text/plain')] = app.$set(app.columns[Board.newParent], event.dataTransfer.getData('text/plain'), Board.data.columns[Board.currentParent].cards[event.dataTransfer.getData('text/plain')])
     delete app.columns[Board.currentParent].cards[event.dataTransfer.getData('text/plain')]
-
 }
 
 function sendBoardToServer() {
@@ -135,10 +139,8 @@ $('[data-addColumn]').click(function() {
 })
 
 $('[data-syncFromServer]').click(function() {
-    $(this).addClass('is-adding')
     $.get('/syncmails').then(function() {
         $('#syncmodal').foundation('close')
-        $('[data-syncFromServer]').removeClass('is-adding')
         startBoard()
         alert('Mails synced!', 'success')
     }, function() {
