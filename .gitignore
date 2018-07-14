@@ -1,5 +1,1 @@
-/vendor/
-/tmp/
-/logs/*
-!/logs/README.md
-data/mails.json
+node_modules/*

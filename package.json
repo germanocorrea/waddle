@@ -1,0 +1,22 @@
+{
+  "name": "waddle",
+  "version": "1.0.0",
+  "description": "Trello-like app for organizing your Gmail inbox",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/germanocorrea/waddle.git"
+  },
+  "author": "Germano Corrêa",
+  "license": "AGPL-3.0",
+  "bugs": {
+    "url": "https://github.com/germanocorrea/waddle/issues"
+  },
+  "homepage": "https://github.com/germanocorrea/waddle#readme",
+  "dependencies": {
+    "express": "^4.16.3"
+  }
+}
