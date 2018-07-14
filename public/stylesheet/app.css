@@ -1,0 +1,51 @@
+body, html {
+    /* background-color: #c8c8c8; */
+    overflow-x: hidden;
+}
+
+.top-bar, .top-bar-left, .top-bar-left .menu {
+    /* background-color: #963C2B; */
+}
+/* .card {
+    border-radius: 3px;
+    padding: 0.3em;
+    cursor: pointer;
+} */
+
+.board-column {
+    /* margin: 1em; */
+    /* padding: 1em; */
+    /* background: whitesmoke; */
+    /* border-radius: 2px; */
+    /* float: left; */
+    /* width: 300px; */
+    /* height: 80vh; */
+}
+
+/* .board-column ul {
+    max-width: 100%;
+    overflow-y: scroll;
+    position: relative;
+    height: 80%;
+    overflow: auto;
+    box-sizing: border-box;
+}
+
+.draghere {
+    background-color: #e0e0e0;
+    padding: 1em;
+    border: 0px;
+    border-radius: 3px;
+    /* display: none; 
+    color: #9b9494;
+}
+
+.grid-frame {
+    width: calc;
+    overflow-x: scroll;
+}
+
+.has-tip {
+    cursor: pointer !important;
+    border: 0;
+} */

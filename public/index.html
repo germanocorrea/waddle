@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Waddle</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css">
+        <link rel="stylesheet" href="/stylesheet/app.css">
+    </head>
+    <body class="bg-light">
+        <nav class="navbar navbar-dark bg-dark">
+            <a class="navbar-brand" href="#">
+                <img src="/assets/icon.png" width="30" height="30" alt="">
+                Waddle
+            </a>
+        </nav>
+        <div class="container-fluid grid-frame" style="margin-top: 1em; width: calc; overflow-x: scroll;">
+            <div class="row" style="height: 80vh">
+                <div class="col col-sm-3 bg-white rounded border">
+                    <h3 style="padding: 0.3em">Inbox</h3>
+                    <ul style="padding-left:0">
+                        <li class="card bg-dark text-white">
+                            <!-- <img class="card-img-top" src=".../100px180/?text=Image cap" alt="Card image cap"> -->
+                            <div class="card-body">
+                                <span class="float-right badge badge-primary">New</span>
+                                <h5 class="card-title">Exemplo</h5>
+                                <h6 class="card-subtitle text-muted">email@mailinator.com</h6>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+        <script src="/script/board.js"></script>
+    </body>
+</html>
